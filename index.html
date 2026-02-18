@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ka | Digital Card</title>
+  <link rel="icon" href="favicon.ico">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#38bdf8'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="min-h-screen bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-50 flex justify-center">
+  <div class="relative flex w-full justify-center">
+    <!-- Top gradient header -->
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 h-[32vh] min-h-[190px] bg-gradient-to-b from-indigo-500 via-purple-500 to-sky-400">
+    </div>
+
+    <main class="relative z-10 w-full max-w-md px-4 pt-6 pb-10">
+      <!-- Dark / Light Toggle (single icon) -->
+      <div class="flex justify-end mb-4">
+        <button id="themeToggle" type="button" onclick="toggleDarkMode()"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/70 dark:bg-slate-800/80 text-slate-800 dark:text-slate-100 shadow-sm ring-1 ring-black/5 backdrop-blur hover:bg-white hover:shadow-md transition"
+          aria-label="Chuyển chế độ sáng/tối" title="Chuyển chế độ sáng/tối">
+          <span class="sr-only">Chuyển chế độ sáng/tối</span>
+          <!-- icon will be injected by JS -->
+          <span id="themeIcon" class="inline-flex"></span>
+        </button>
+      </div>
+
+      <!-- Main card -->
+      <section
+        class="relative bg-white/95 dark:bg-slate-950/95 rounded-3xl shadow-2xl ring-1 ring-white/60 dark:ring-slate-800 px-6 pt-16 pb-7 space-y-6">
+        <!-- Avatar overlapping header + card -->
+        <div class="absolute -top-14 left-1/2 -translate-x-1/2">
+          <div class="relative">
+            <img
+              src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/528021813_1826717127876320_7501546431008806429_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=101&ccb=1-7&_nc_sid=e99d92&_nc_ohc=Xdrx07TvOvsQ7kNvwGXi1VQ&_nc_oc=AdkIwWc3JhjWv-MSddW7okOJ5joZmmrYNX7_00o2Suwrn4jK1NowzoeBpk-NJiv3DPhLcjBmeFHOLdVPtI95IlNZ&_nc_zt=24&_nc_ht=scontent.fdad3-6.fna&_nc_gid=LqiJMm63gpeL1P-giRI8jg&oh=00_Afs21zomL48Hdzp28KLTL3JMdGvx-z3WqdwfnQig3CcjLA&oe=699A947F"
+              alt="Ảnh đại diện của Ka"
+              class="h-24 w-24 rounded-full object-cover border-4 border-white dark:border-slate-950 shadow-xl shadow-slate-900/25">
+          </div>
+        </div>
+
+        <!-- Profile -->
+        <header class="pt-2 text-center space-y-2">
+          <h1 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">Ka</h1>
+          <p class="text-sm font-medium text-indigo-500 dark:text-indigo-400">Web Developer · Digital Marketing</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
+            Build web, ship sản phẩm thật. Yêu UI sạch, logic gọn, ADS & SEO. 
+          <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1">
+            <span class="inline-block h-1 w-1 rounded-full bg-emerald-400"></span>
+            Ho Chi Minh City, VN
+          </p>
+        </header>
+        <!-- Quick actions -->
+        <section class="space-y-3">
+          <h2 class="text-[11px] font-semibold tracking-[0.15em] text-slate-500 dark:text-slate-400 uppercase text-center">
+            Liên hệ nhanh
+          </h2>
+          <div class="grid grid-cols-4 gap-3 text-[11px]">
+            <a href="tel:0931967576" aria-label="Gọi điện" title="Gọi điện"
+              class="flex flex-col items-center gap-1 text-slate-600 dark:text-slate-100 group">
+              <span
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-500 text-white shadow-md shadow-indigo-500/40 group-hover:bg-indigo-600 transition">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+                  <path
+                    d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1C10.07 21.81 2.19 13.93 2.19 4a1 1 0 0 1 1-1H6.7a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.59a1 1 0 0 1-.25 1.01l-2.4 2.19Z" />
+                </svg>
+              </span>
+              <span>Gọi</span>
+            </a>
+
+            <a href="https://zalo.me/0931967576" target="_blank" rel="noopener" aria-label="Nhắn Zalo" title="Nhắn Zalo"
+              class="flex flex-col items-center gap-1 text-slate-600 dark:text-slate-100 group">
+              <span
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-[#0068FF] text-white shadow-md shadow-sky-500/40 group-hover:bg-[#055BE0] transition">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+                  <path
+                    d="M12 3C6.9 3 2.8 6.29 2.8 10.35c0 2.47 1.53 4.65 3.9 6.03l-.62 3.07a.9.9 0 0 0 1.33.96l3.34-1.93c.41.05.83.08 1.25.08 5.1 0 9.2-3.29 9.2-7.35S17.1 3 12 3Zm4.34 5.3-6.58 7.2a1 1 0 0 1-1.7-.83l.67-3.1a1 1 0 0 1 .3-.52l6.58-7.2a1 1 0 0 1 1.73 1.45Z" />
+                </svg>
+              </span>
+              <span>Zalo</span>
+            </a>
+
+            <a href="mailto:anhbao88thang@gmail.com" aria-label="Gửi email" title="Gửi email"
+              class="flex flex-col items-center gap-1 text-slate-600 dark:text-slate-100 group">
+              <span
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-white shadow-md shadow-emerald-500/40 group-hover:bg-emerald-600 transition">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+                  <path
+                    d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z" />
+                </svg>
+              </span>
+              <span>Email</span>
+            </a>
+
+            <button type="button" aria-label="Sao chép số điện thoại" title="Sao chép số điện thoại"
+              onclick="copyToClipboard('0931967576','Đã sao chép số điện thoại')"
+              class="flex flex-col items-center gap-1 text-slate-600 dark:text-slate-100 group">
+              <span
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-white dark:bg-slate-700 shadow-md shadow-slate-900/40 group-hover:bg-slate-800 dark:group-hover:bg-slate-600 transition">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+                  <path
+                    d="M16 1H8a2 2 0 0 0-2 2v2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7l-3-6Zm-1 18H5V7h1v9a2 2 0 0 0 2 2h7v1Zm3-3H8V3h7.5L18 7v9Z" />
+                </svg>
+              </span>
+              <span>Copy SĐT</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Social icons row -->
+        <section class="space-y-3">
+          <h2 class="text-[11px] font-semibold tracking-[0.15em] text-slate-500 dark:text-slate-400 uppercase text-center">
+            Mạng xã hội
+          </h2>
+          <div class="flex flex-wrap justify-center gap-3" aria-label="Liên kết mạng xã hội">
+            <a href="https://www.facebook.com/3lituka" target="_blank" rel="noopener"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-slate-600 shadow-sm ring-1 ring-slate-200 hover:bg-[#0866FF] hover:text-white hover:ring-[#0866FF]/70 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 transition"
+              aria-label="Facebook" title="Facebook">
+              <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-current">
+                <path
+                  d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.25c-1.23 0-1.62.77-1.62 1.56v1.87h2.76l-.44 2.9h-2.32V22c4.78-.79 8.44-4.94 8.44-9.94Z" />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/nmth%E1%BA%AFng/" target="_blank"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-slate-600 shadow-sm ring-1 ring-slate-200 hover:bg-[#0A66C2] hover:text-white hover:ring-[#0A66C2]/70 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 transition"
+              aria-label="LinkedIn" title="LinkedIn">
+              <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-current">
+                <path
+                  d="M20.45 20.45h-3.55v-5.56c0-1.33-.02-3.03-1.84-3.03-1.84 0-2.12 1.44-2.12 2.93v5.66H9.39V9h3.41v1.56h.05c.48-.9 1.64-1.84 3.37-1.84 3.6 0 4.26 2.37 4.26 5.45v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm-1.78 13.02h3.56V9H3.56v11.45Z" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/lytieuka/" target="_blank"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-slate-600 shadow-sm ring-1 ring-slate-200 hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#515BD4] hover:text-white hover:ring-pink-500/70 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 transition"
+              aria-label="Instagram" title="Instagram">
+              <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-current">
+                <path
+                  d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm10.25 1.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com/@lka0704" target="_blank" rel="noopener"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-slate-800 shadow-sm ring-1 ring-slate-200 hover:bg-slate-900 hover:text-white hover:ring-slate-900/80 dark:bg-slate-900 dark:text-slate-100 dark:ring-slate-700 transition"
+              aria-label="TikTok" title="TikTok">
+              <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-current">
+                <path
+                  d="M18.5 7.25a4.3 4.3 0 0 1-2.21-.64 4.54 4.54 0 0 1-1.61-1.8 4.2 4.2 0 0 1-.3-1.2H11v9.86a2.08 2.08 0 0 1-1.06 1.81 2.1 2.1 0 0 1-1.6.18 2.08 2.08 0 0 1-1.18-1 2.05 2.05 0 0 1 .57-2.55 2.1 2.1 0 0 1 1.53-.44V9.1a4.2 4.2 0 0 0-2.2.3 4.24 4.24 0 0 0-2.33 2.71 4.2 4.2 0 0 0-.08 1.76 4.23 4.23 0 0 0 2.1 2.84 4.3 4.3 0 0 0 2.01.5 4.3 4.3 0 0 0 2.15-.58 4.26 4.26 0 0 0 1.55-1.6 4.1 4.1 0 0 0 .5-2V8.4c.3.22.62.42.96.59a6 6 0 0 0 3.01.64V7.25Z" />
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        <!-- Payment / Thanh toán -->
+        <section class="space-y-3">
+          <h2 class="text-sm font-semibold text-slate-800 dark:text-slate-100">Thanh toán</h2>
+
+          <!-- MoMo -->
+          <div
+            class="rounded-2xl bg-slate-50 dark:bg-slate-900/70 px-4 py-3 shadow-sm border border-slate-100/80 dark:border-slate-800">
+            <button type="button" onclick="toggleAccordion('momo-panel')"
+              class="flex w-full items-center justify-between gap-3">
+              <div class="text-left">
+                <p class="text-sm font-medium text-slate-900 dark:text-slate-50">MoMo</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">
+                  0931967576 – Nguyễn Minh Thắng
+                </p>
+              </div>
+              <div class="flex items-center gap-2 text-xs font-medium text-indigo-500">
+                <span>Chi tiết</span>
+                <span data-accordion-icon="momo-panel"
+                  class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-indigo-500/10 text-indigo-500 transition-transform">
+                  ˅
+                </span>
+              </div>
+            </button>
+
+            <div id="momo-panel" class="mt-3 space-y-3 text-sm hidden">
+              <div class="flex items-center justify-between gap-3">
+                <p class="text-xs text-slate-500 dark:text-slate-400">
+                  Số điện thoại:
+                  <span class="font-semibold text-slate-900 dark:text-slate-100">0931967576</span>
+                </p>
+                <button type="button" aria-label="Sao chép số MoMo" title="Sao chép số MoMo"
+                  onclick="copyToClipboard('0931967576','Đã sao chép số MoMo')"
+                  class="inline-flex items-center rounded-full bg-slate-900 text-white text-xs font-medium px-3 py-1.5 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 transition">
+                  <span class="inline-flex items-center gap-1">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-current">
+                      <path
+                        d="M16 1H8a2 2 0 0 0-2 2v2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7l-3-6Zm-1 18H5V7h1v9a2 2 0 0 0 2 2h7v1Zm3-3H8V3h7.5L18 7v9Z" />
+                    </svg>
+                    Copy
+                  </span>
+                </button>
+              </div>
+              <div class="flex justify-center">
+                <img src="QR_MOMO.jpg" alt="Mã QR thanh toán MoMo"
+                  class="w-40 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md">
+              </div>
+            </div>
+          </div>
+
+          <!-- Bank -->
+          <div
+            class="rounded-2xl bg-slate-50 dark:bg-slate-900/70 px-4 py-3 shadow-sm border border-slate-100/80 dark:border-slate-800">
+            <button type="button" onclick="toggleAccordion('bank-panel')"
+              class="flex w-full items-center justify-between gap-3">
+              <div class="text-left">
+                <p class="text-sm font-medium text-slate-900 dark:text-slate-50">MB Bank</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">
+                  STK: 0931967576 – Nguyễn Minh Thắng
+                </p>
+              </div>
+              <div class="flex items-center gap-2 text-xs font-medium text-indigo-500">
+                <span>Chi tiết</span>
+                <span data-accordion-icon="bank-panel"
+                  class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-indigo-500/10 text-indigo-500 transition-transform">
+                  ˅
+                </span>
+              </div>
+            </button>
+
+            <div id="bank-panel" class="mt-3 space-y-3 text-sm hidden">
+              <div class="flex items-center justify-between gap-3">
+                <div class="text-xs text-slate-500 dark:text-slate-400">
+                  <p>Ngân hàng: <span class="font-semibold">MB Bank</span></p>
+                  <p>STK: <span class="font-semibold">0931967576</span></p>
+                  <p>Chủ TK: <span class="font-semibold">Nguyễn Minh Thắng</span></p>
+                </div>
+                <button type="button" aria-label="Sao chép số tài khoản ngân hàng" title="Sao chép số tài khoản ngân hàng"
+                  onclick="copyToClipboard('0931967576','Đã sao chép STK ngân hàng')"
+                  class="inline-flex items-center rounded-full bg-slate-900 text-white text-xs font-medium px-3 py-1.5 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 transition">
+                  <span class="inline-flex items-center gap-1">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-current">
+                      <path
+                        d="M16 1H8a2 2 0 0 0-2 2v2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7l-3-6Zm-1 18H5V7h1v9a2 2 0 0 0 2 2h7v1Zm3-3H8V3h7.5L18 7v9Z" />
+                    </svg>
+                    Copy STK
+                  </span>
+                </button>
+              </div>
+              <div class="flex justify-center">
+                <img src="QR_BANK.jpg" alt="Mã QR thanh toán MB Bank"
+                  class="w-40 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Services -->
+        <section class="space-y-3">
+          <h2 class="text-sm font-semibold text-slate-800 dark:text-slate-100">Dịch vụ</h2>
+          <div class="space-y-2">
+            <div
+              class="flex items-start gap-2 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/80 px-3 py-2 text-xs">
+              <span class="mt-[2px] h-5 w-5 flex items-center justify-center rounded-full bg-indigo-500/10 text-indigo-500">
+                🌐
+              </span>
+              <div class="space-y-0.5">
+                <p class="font-medium text-slate-800 dark:text-slate-100">Web Development</p>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">
+                  Website chuẩn UI/UX, mobile-first, tối ưu tốc độ & SEO.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex items-start gap-2 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/80 px-3 py-2 text-xs">
+              <span class="mt-[2px] h-5 w-5 flex items-center justify-center rounded-full bg-emerald-500/10 text-emerald-500">
+                ⚙️
+              </span>
+              <div class="space-y-0.5">
+                <p class="font-medium text-slate-800 dark:text-slate-100">Digital Marketing</p>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">
+                  Chạy ads Facebook, Google, tối ưu chuyển đổi & tracking.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex items-start gap-2 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/80 px-3 py-2 text-xs">
+              <span class="mt-[2px] h-5 w-5 flex items-center justify-center rounded-full bg-sky-500/10 text-sky-500">
+                📈
+              </span>
+              <div class="space-y-0.5">
+                <p class="font-medium text-slate-800 dark:text-slate-100">Giải pháp IT & Growth</p>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">
+                  Tư vấn & triển khai hệ thống web, tracking, automation marketing.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- About -->
+        <section class="border-t border-dashed border-slate-200 dark:border-slate-800 pt-4 text-xs text-slate-500 dark:text-slate-400">
+          <p class="leading-relaxed">
+            Mình tập trung vào việc xây web & funnel marketing chạy thật, dễ scale và dễ bảo trì.
+            Ưu tiên trải nghiệm người dùng, tracking rõ ràng và kết quả đo được.
+          </p>
+        </section>
+      </section>
+
+      <!-- Minimal footer -->
+      <footer class="mt-4 text-center text-[11px] text-slate-400 dark:text-slate-500">
+        © 2026 Ka · Digital Card
+      </footer>
+    </main>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast"
+    class="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 -translate-y-2 rounded-full bg-slate-900/90 px-4 py-2 text-xs text-white shadow-lg shadow-slate-900/40 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-200">
+    Đã sao chép
+  </div>
+
+  <!-- JS -->
+  <script>
+    const THEME_KEY = 'kbk-theme';
+    const THEME_ICONS = {
+      sun: `
+        <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+          <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Zm0-14a1 1 0 0 1-1-1V2a1 1 0 1 1 2 0v1a1 1 0 0 1-1 1Zm0 20a1 1 0 0 1-1-1v-1a1 1 0 1 1 2 0v1a1 1 0 0 1-1 1Zm10-11h-1a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2ZM4 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1Zm15.07-6.07a1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1-1.41 0ZM3.51 20.49a1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1-1.41 0Zm17.68 0a1 1 0 0 1-1.41 0l-.71-.71a1 1 0 1 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41ZM5.63 5.63a1 1 0 0 1-1.41 0l-.71-.71A1 1 0 1 1 4.92 3.5l.71.71a1 1 0 0 1 0 1.41Z"/>
+        </svg>
+      `,
+      moon: `
+        <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+          <path d="M21 14.57A8.5 8.5 0 0 1 9.43 3a6.5 6.5 0 1 0 11.57 11.57Z"/>
+        </svg>
+      `
+    };
+
+    // Khởi tạo theme theo localStorage / hệ thống
+    (function initTheme() {
+      try {
+        const saved = localStorage.getItem(THEME_KEY);
+        if (saved === 'dark' || (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {
+        // ignore
+      }
+    })();
+
+    function renderThemeIcon() {
+      const iconEl = document.getElementById('themeIcon');
+      if (!iconEl) return;
+      const isDark = document.documentElement.classList.contains('dark');
+      // Khi đang dark -> hiển thị icon mặt trời (để gợi ý chuyển sang sáng)
+      iconEl.innerHTML = isDark ? THEME_ICONS.sun : THEME_ICONS.moon;
+    }
+
+    function toggleDarkMode() {
+      const root = document.documentElement;
+      const isDark = root.classList.toggle('dark');
+      try {
+        localStorage.setItem(THEME_KEY, isDark ? 'dark' : 'light');
+      } catch (e) {
+        // ignore
+      }
+      renderThemeIcon();
+    }
+
+    function copyToClipboard(text, successMessage) {
+      if (!navigator.clipboard) {
+        const temp = document.createElement('textarea');
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        showToast(successMessage || 'Đã sao chép');
+        return;
+      }
+
+      navigator.clipboard.writeText(text)
+        .then(function () {
+          showToast(successMessage || 'Đã sao chép');
+        })
+        .catch(function () {
+          showToast('Không thể sao chép, vui lòng thử lại');
+        });
+    }
+
+    let toastTimeout;
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-2');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2');
+      }, 1800);
+    }
+
+    function toggleAccordion(id) {
+      const panel = document.getElementById(id);
+      const icon = document.querySelector('[data-accordion-icon="' + id + '"]');
+      if (!panel) return;
+      panel.classList.toggle('hidden');
+      if (icon) {
+        icon.classList.toggle('rotate-180');
+      }
+    }
+
+    // Render icon ngay khi load
+    renderThemeIcon();
+  </script>
+
+</body>
+</html>
