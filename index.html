@@ -21,13 +21,106 @@
       }
     }
   </script>
+
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 1ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .kbk-fade-down {
+        animation: kbkFadeDown 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      .kbk-fade-up {
+        animation: kbkFadeUp 640ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation-delay: 90ms;
+      }
+
+      .kbk-avatar-pop {
+        animation: kbkAvatarPop 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation-delay: 140ms;
+      }
+
+      .kbk-copy-pulse {
+        animation: kbkCopyPulse 240ms ease-out both;
+      }
+    }
+
+    @keyframes kbkFadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes kbkFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes kbkAvatarPop {
+      from {
+        opacity: 0;
+        transform: scale(0.92);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes kbkCopyPulse {
+      0% {
+        transform: scale(1);
+      }
+
+      55% {
+        transform: scale(1.03);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .kbk-accordion {
+      height: 0px;
+      opacity: 0;
+      overflow: hidden;
+      transition: height 280ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease;
+      will-change: height, opacity;
+    }
+
+    .kbk-accordion[data-open="true"] {
+      opacity: 1;
+    }
+  </style>
 </head>
 
 <body class="min-h-screen bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-50 flex justify-center">
   <div class="relative flex w-full justify-center">
     <!-- Top gradient header -->
     <div
-      class="pointer-events-none absolute inset-x-0 top-0 h-[32vh] min-h-[190px] bg-gradient-to-b from-indigo-500 via-purple-500 to-sky-400">
+      class="kbk-fade-down pointer-events-none absolute inset-x-0 top-0 h-[32vh] min-h-[190px] bg-gradient-to-b from-indigo-500 via-purple-500 to-sky-400">
     </div>
 
     <main class="relative z-10 w-full max-w-md px-4 pt-6 pb-10">
@@ -44,14 +137,14 @@
 
       <!-- Main card -->
       <section
-        class="relative bg-white/95 dark:bg-slate-950/95 rounded-3xl shadow-2xl ring-1 ring-white/60 dark:ring-slate-800 px-6 pt-16 pb-7 space-y-6">
+        class="kbk-fade-up relative bg-white/95 dark:bg-slate-950/95 rounded-3xl shadow-2xl ring-1 ring-white/60 dark:ring-slate-800 px-6 pt-16 pb-7 space-y-6">
         <!-- Avatar overlapping header + card -->
         <div class="absolute -top-14 left-1/2 -translate-x-1/2">
           <div class="relative">
             <img
               src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/528021813_1826717127876320_7501546431008806429_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=101&ccb=1-7&_nc_sid=e99d92&_nc_ohc=Xdrx07TvOvsQ7kNvwGXi1VQ&_nc_oc=AdkIwWc3JhjWv-MSddW7okOJ5joZmmrYNX7_00o2Suwrn4jK1NowzoeBpk-NJiv3DPhLcjBmeFHOLdVPtI95IlNZ&_nc_zt=24&_nc_ht=scontent.fdad3-6.fna&_nc_gid=LqiJMm63gpeL1P-giRI8jg&oh=00_Afs21zomL48Hdzp28KLTL3JMdGvx-z3WqdwfnQig3CcjLA&oe=699A947F"
               alt="Ảnh đại diện của Ka"
-              class="h-24 w-24 rounded-full object-cover border-4 border-white dark:border-slate-950 shadow-xl shadow-slate-900/25">
+              class="kbk-avatar-pop h-24 w-24 rounded-full object-cover border-4 border-white dark:border-slate-950 shadow-xl shadow-slate-900/25">
           </div>
         </div>
 
@@ -60,7 +153,8 @@
           <h1 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">Ka</h1>
           <p class="text-sm font-medium text-indigo-500 dark:text-indigo-400">Web Developer · Digital Marketing</p>
           <p class="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
-            Build web, ship sản phẩm thật. Yêu UI sạch, logic gọn, ADS & SEO. 
+            Build web, ship sản phẩm thật. Yêu UI sạch, logic gọn, ADS & SEO. Sinh viên năm cuối IT.
+          </p>
           <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1">
             <span class="inline-block h-1 w-1 rounded-full bg-emerald-400"></span>
             Ho Chi Minh City, VN
@@ -75,7 +169,7 @@
             <a href="tel:0931967576" aria-label="Gọi điện" title="Gọi điện"
               class="flex flex-col items-center gap-1 text-slate-600 dark:text-slate-100 group">
               <span
-                class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-500 text-white shadow-md shadow-indigo-500/40 group-hover:bg-indigo-600 transition">
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-500 text-white shadow-md shadow-indigo-500/40 group-hover:bg-indigo-600 transition-transform duration-200 ease-out group-hover:scale-[1.06] group-active:scale-[0.97]">
                 <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
                   <path
                     d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1C10.07 21.81 2.19 13.93 2.19 4a1 1 0 0 1 1-1H6.7a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.59a1 1 0 0 1-.25 1.01l-2.4 2.19Z" />
@@ -87,7 +181,7 @@
             <a href="https://zalo.me/0931967576" target="_blank" rel="noopener" aria-label="Nhắn Zalo" title="Nhắn Zalo"
               class="flex flex-col items-center gap-1 text-slate-600 dark:text-slate-100 group">
               <span
-                class="flex h-10 w-10 items-center justify-center rounded-full bg-[#0068FF] text-white shadow-md shadow-sky-500/40 group-hover:bg-[#055BE0] transition">
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-[#0068FF] text-white shadow-md shadow-sky-500/40 group-hover:bg-[#055BE0] transition-transform duration-200 ease-out group-hover:scale-[1.06] group-active:scale-[0.97]">
                 <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
                   <path
                     d="M12 3C6.9 3 2.8 6.29 2.8 10.35c0 2.47 1.53 4.65 3.9 6.03l-.62 3.07a.9.9 0 0 0 1.33.96l3.34-1.93c.41.05.83.08 1.25.08 5.1 0 9.2-3.29 9.2-7.35S17.1 3 12 3Zm4.34 5.3-6.58 7.2a1 1 0 0 1-1.7-.83l.67-3.1a1 1 0 0 1 .3-.52l6.58-7.2a1 1 0 0 1 1.73 1.45Z" />
@@ -99,7 +193,7 @@
             <a href="mailto:anhbao88thang@gmail.com" aria-label="Gửi email" title="Gửi email"
               class="flex flex-col items-center gap-1 text-slate-600 dark:text-slate-100 group">
               <span
-                class="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-white shadow-md shadow-emerald-500/40 group-hover:bg-emerald-600 transition">
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-white shadow-md shadow-emerald-500/40 group-hover:bg-emerald-600 transition-transform duration-200 ease-out group-hover:scale-[1.06] group-active:scale-[0.97]">
                 <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
                   <path
                     d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z" />
@@ -109,10 +203,10 @@
             </a>
 
             <button type="button" aria-label="Sao chép số điện thoại" title="Sao chép số điện thoại"
-              onclick="copyToClipboard('0931967576','Đã sao chép số điện thoại')"
-              class="flex flex-col items-center gap-1 text-slate-600 dark:text-slate-100 group">
+              onclick="copyToClipboard('0931967576','Đã sao chép số điện thoại', this)"
+              class="flex flex-col items-center gap-1 text-slate-600 dark:text-slate-100 group transition-transform duration-200 ease-out hover:scale-[1.02] active:scale-[0.98]">
               <span
-                class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-white dark:bg-slate-700 shadow-md shadow-slate-900/40 group-hover:bg-slate-800 dark:group-hover:bg-slate-600 transition">
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-white dark:bg-slate-700 shadow-md shadow-slate-900/40 group-hover:bg-slate-800 dark:group-hover:bg-slate-600 transition-transform duration-200 ease-out group-hover:scale-[1.06] group-active:scale-[0.97]">
                 <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
                   <path
                     d="M16 1H8a2 2 0 0 0-2 2v2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7l-3-6Zm-1 18H5V7h1v9a2 2 0 0 0 2 2h7v1Zm3-3H8V3h7.5L18 7v9Z" />
@@ -130,7 +224,7 @@
           </h2>
           <div class="flex flex-wrap justify-center gap-3" aria-label="Liên kết mạng xã hội">
             <a href="https://www.facebook.com/3lituka" target="_blank" rel="noopener"
-              class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-slate-600 shadow-sm ring-1 ring-slate-200 hover:bg-[#0866FF] hover:text-white hover:ring-[#0866FF]/70 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 transition"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-slate-600 shadow-sm ring-1 ring-slate-200 hover:bg-[#0866FF] hover:text-white hover:ring-[#0866FF]/70 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 transition-transform duration-200 ease-out hover:scale-[1.06] active:scale-[0.97]"
               aria-label="Facebook" title="Facebook">
               <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-current">
                 <path
@@ -138,7 +232,7 @@
               </svg>
             </a>
             <a href="https://www.linkedin.com/in/nmth%E1%BA%AFng/" target="_blank"
-              class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-slate-600 shadow-sm ring-1 ring-slate-200 hover:bg-[#0A66C2] hover:text-white hover:ring-[#0A66C2]/70 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 transition"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-slate-600 shadow-sm ring-1 ring-slate-200 hover:bg-[#0A66C2] hover:text-white hover:ring-[#0A66C2]/70 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 transition-transform duration-200 ease-out hover:scale-[1.06] active:scale-[0.97]"
               aria-label="LinkedIn" title="LinkedIn">
               <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-current">
                 <path
@@ -146,7 +240,7 @@
               </svg>
             </a>
             <a href="https://www.instagram.com/lytieuka/" target="_blank"
-              class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-slate-600 shadow-sm ring-1 ring-slate-200 hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#515BD4] hover:text-white hover:ring-pink-500/70 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 transition"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-slate-600 shadow-sm ring-1 ring-slate-200 hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#515BD4] hover:text-white hover:ring-pink-500/70 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 transition-transform duration-200 ease-out hover:scale-[1.06] active:scale-[0.97]"
               aria-label="Instagram" title="Instagram">
               <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-current">
                 <path
@@ -154,7 +248,7 @@
               </svg>
             </a>
             <a href="https://www.tiktok.com/@lka0704" target="_blank" rel="noopener"
-              class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-slate-800 shadow-sm ring-1 ring-slate-200 hover:bg-slate-900 hover:text-white hover:ring-slate-900/80 dark:bg-slate-900 dark:text-slate-100 dark:ring-slate-700 transition"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-slate-800 shadow-sm ring-1 ring-slate-200 hover:bg-slate-900 hover:text-white hover:ring-slate-900/80 dark:bg-slate-900 dark:text-slate-100 dark:ring-slate-700 transition-transform duration-200 ease-out hover:scale-[1.06] active:scale-[0.97]"
               aria-label="TikTok" title="TikTok">
               <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-current">
                 <path
@@ -170,9 +264,8 @@
 
           <!-- MoMo -->
           <div
-            class="rounded-2xl bg-slate-50 dark:bg-slate-900/70 px-4 py-3 shadow-sm border border-slate-100/80 dark:border-slate-800">
-            <button type="button" onclick="toggleAccordion('momo-panel')"
-              class="flex w-full items-center justify-between gap-3">
+            class="rounded-2xl bg-slate-50 dark:bg-slate-900/70 px-4 py-3 shadow-sm border border-slate-100/80 dark:border-slate-800 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md">
+            <div class="flex w-full items-center justify-between gap-3">
               <div class="text-left">
                 <p class="text-sm font-medium text-slate-900 dark:text-slate-50">MoMo</p>
                 <p class="text-xs text-slate-500 dark:text-slate-400">
@@ -180,22 +273,30 @@
                 </p>
               </div>
               <div class="flex items-center gap-2 text-xs font-medium text-indigo-500">
-                <span>Chi tiết</span>
-                <span data-accordion-icon="momo-panel"
-                  class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-indigo-500/10 text-indigo-500 transition-transform">
-                  ˅
-                </span>
+                <a href="momo://app" target="_blank" rel="noopener"
+                  class="hidden xs:inline-flex items-center rounded-full bg-indigo-500/10 px-2 py-1 text-[11px] hover:bg-indigo-500 hover:text-white transition"
+                  aria-label="Mở ứng dụng MoMo" title="Mở ứng dụng MoMo">
+                  Mở app
+                </a>
+                <button type="button" onclick="toggleAccordion('momo-panel')" aria-expanded="false" aria-controls="momo-panel"
+                  class="inline-flex items-center gap-1 rounded-full px-2 py-1 text-indigo-500 hover:bg-indigo-500/10 transition">
+                  <span>Chi tiết</span>
+                  <span data-accordion-icon="momo-panel"
+                    class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-indigo-500/10 text-indigo-500 transition-transform">
+                    ˅
+                  </span>
+                </button>
               </div>
-            </button>
+            </div>
 
-            <div id="momo-panel" class="mt-3 space-y-3 text-sm hidden">
+            <div id="momo-panel" data-accordion-panel data-open="false" class="kbk-accordion mt-3 space-y-3 text-sm">
               <div class="flex items-center justify-between gap-3">
                 <p class="text-xs text-slate-500 dark:text-slate-400">
                   Số điện thoại:
                   <span class="font-semibold text-slate-900 dark:text-slate-100">0931967576</span>
                 </p>
                 <button type="button" aria-label="Sao chép số MoMo" title="Sao chép số MoMo"
-                  onclick="copyToClipboard('0931967576','Đã sao chép số MoMo')"
+                  onclick="copyToClipboard('0931967576','Đã sao chép số MoMo', this)"
                   class="inline-flex items-center rounded-full bg-slate-900 text-white text-xs font-medium px-3 py-1.5 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 transition">
                   <span class="inline-flex items-center gap-1">
                     <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-current">
@@ -215,9 +316,8 @@
 
           <!-- Bank -->
           <div
-            class="rounded-2xl bg-slate-50 dark:bg-slate-900/70 px-4 py-3 shadow-sm border border-slate-100/80 dark:border-slate-800">
-            <button type="button" onclick="toggleAccordion('bank-panel')"
-              class="flex w-full items-center justify-between gap-3">
+            class="rounded-2xl bg-slate-50 dark:bg-slate-900/70 px-4 py-3 shadow-sm border border-slate-100/80 dark:border-slate-800 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md">
+            <div class="flex w-full items-center justify-between gap-3">
               <div class="text-left">
                 <p class="text-sm font-medium text-slate-900 dark:text-slate-50">MB Bank</p>
                 <p class="text-xs text-slate-500 dark:text-slate-400">
@@ -225,15 +325,23 @@
                 </p>
               </div>
               <div class="flex items-center gap-2 text-xs font-medium text-indigo-500">
-                <span>Chi tiết</span>
-                <span data-accordion-icon="bank-panel"
-                  class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-indigo-500/10 text-indigo-500 transition-transform">
-                  ˅
-                </span>
+                <a href="mbbank://"
+                  class="hidden xs:inline-flex items-center rounded-full bg-indigo-500/10 px-2 py-1 text-[11px] hover:bg-indigo-500 hover:text-white transition"
+                  aria-label="Mở ứng dụng MB Bank" title="Mở ứng dụng MB Bank">
+                  Mở app
+                </a>
+                <button type="button" onclick="toggleAccordion('bank-panel')" aria-expanded="false" aria-controls="bank-panel"
+                  class="inline-flex items-center gap-1 rounded-full px-2 py-1 text-indigo-500 hover:bg-indigo-500/10 transition">
+                  <span>Chi tiết</span>
+                  <span data-accordion-icon="bank-panel"
+                    class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-indigo-500/10 text-indigo-500 transition-transform">
+                    ˅
+                  </span>
+                </button>
               </div>
-            </button>
+            </div>
 
-            <div id="bank-panel" class="mt-3 space-y-3 text-sm hidden">
+            <div id="bank-panel" data-accordion-panel data-open="false" class="kbk-accordion mt-3 space-y-3 text-sm">
               <div class="flex items-center justify-between gap-3">
                 <div class="text-xs text-slate-500 dark:text-slate-400">
                   <p>Ngân hàng: <span class="font-semibold">MB Bank</span></p>
@@ -241,7 +349,7 @@
                   <p>Chủ TK: <span class="font-semibold">Nguyễn Minh Thắng</span></p>
                 </div>
                 <button type="button" aria-label="Sao chép số tài khoản ngân hàng" title="Sao chép số tài khoản ngân hàng"
-                  onclick="copyToClipboard('0931967576','Đã sao chép STK ngân hàng')"
+                  onclick="copyToClipboard('0931967576','Đã sao chép STK ngân hàng', this)"
                   class="inline-flex items-center rounded-full bg-slate-900 text-white text-xs font-medium px-3 py-1.5 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 transition">
                   <span class="inline-flex items-center gap-1">
                     <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-current">
@@ -323,7 +431,7 @@
 
   <!-- Toast -->
   <div id="toast"
-    class="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 -translate-y-2 rounded-full bg-slate-900/90 px-4 py-2 text-xs text-white shadow-lg shadow-slate-900/40 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-200">
+    class="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 translate-y-2 rounded-full bg-slate-900/90 px-4 py-2 text-xs text-white shadow-lg shadow-slate-900/40 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-200">
     Đã sao chép
   </div>
 
@@ -343,11 +451,11 @@
       `
     };
 
-    // Khởi tạo theme theo localStorage / hệ thống
+    // Khởi tạo theme theo localStorage (mặc định là sáng)
     (function initTheme() {
       try {
         const saved = localStorage.getItem(THEME_KEY);
-        if (saved === 'dark' || (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (saved === 'dark') {
           document.documentElement.classList.add('dark');
         }
       } catch (e) {
@@ -374,7 +482,16 @@
       renderThemeIcon();
     }
 
-    function copyToClipboard(text, successMessage) {
+    function microFeedback(sourceEl) {
+      if (!sourceEl || !sourceEl.classList) return;
+      sourceEl.classList.remove('kbk-copy-pulse');
+      // restart animation
+      void sourceEl.offsetWidth;
+      sourceEl.classList.add('kbk-copy-pulse');
+      setTimeout(() => sourceEl.classList.remove('kbk-copy-pulse'), 260);
+    }
+
+    function copyToClipboard(text, successMessage, sourceEl) {
       if (!navigator.clipboard) {
         const temp = document.createElement('textarea');
         temp.value = text;
@@ -382,12 +499,14 @@
         temp.select();
         document.execCommand('copy');
         document.body.removeChild(temp);
+        microFeedback(sourceEl);
         showToast(successMessage || 'Đã sao chép');
         return;
       }
 
       navigator.clipboard.writeText(text)
         .then(function () {
+          microFeedback(sourceEl);
           showToast(successMessage || 'Đã sao chép');
         })
         .catch(function () {
@@ -400,23 +519,48 @@
       const toast = document.getElementById('toast');
       if (!toast) return;
       toast.textContent = message;
-      toast.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-2');
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2', '-translate-y-2');
       toast.classList.add('opacity-100', 'translate-y-0');
 
       clearTimeout(toastTimeout);
       toastTimeout = setTimeout(() => {
-        toast.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2');
+        toast.classList.remove('translate-y-0');
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
       }, 1800);
     }
 
     function toggleAccordion(id) {
       const panel = document.getElementById(id);
       const icon = document.querySelector('[data-accordion-icon="' + id + '"]');
+      const trigger = document.querySelector('[aria-controls="' + id + '"]');
       if (!panel) return;
-      panel.classList.toggle('hidden');
-      if (icon) {
-        icon.classList.toggle('rotate-180');
+
+      const isOpen = panel.getAttribute('data-open') === 'true';
+      if (isOpen) {
+        // collapse
+        const currentHeight = panel.scrollHeight;
+        panel.style.height = currentHeight + 'px';
+        // force reflow
+        void panel.offsetHeight;
+        panel.setAttribute('data-open', 'false');
+        panel.style.height = '0px';
+      } else {
+        // expand
+        panel.setAttribute('data-open', 'true');
+        panel.style.height = panel.scrollHeight + 'px';
+
+        const onEnd = function (e) {
+          if (e.propertyName !== 'height') return;
+          panel.removeEventListener('transitionend', onEnd);
+          if (panel.getAttribute('data-open') === 'true') {
+            panel.style.height = 'auto';
+          }
+        };
+        panel.addEventListener('transitionend', onEnd);
       }
+
+      if (icon) icon.classList.toggle('rotate-180', !isOpen);
+      if (trigger) trigger.setAttribute('aria-expanded', String(!isOpen));
     }
 
     // Render icon ngay khi load
